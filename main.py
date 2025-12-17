@@ -116,9 +116,13 @@ def main_loop():
                         remaining = SMOKE_CLEAR_DELAY - time_since_smoke
                         minutes_remaining = int(remaining // 60)
                         # Print once per minute when the minute changes
-                        if minutes_remaining > 0 and minutes_remaining != last_minute_printed:
+                        # Also print when reaching 0 minutes (< 60 seconds remaining)
+                        if minutes_remaining != last_minute_printed:
                             last_minute_printed = minutes_remaining
-                            print(f"Fan still running. Time remaining: {minutes_remaining} minutes")
+                            if minutes_remaining > 0:
+                                print(f"Fan still running. Time remaining: {minutes_remaining} minutes")
+                            elif minutes_remaining == 0 and remaining > 0:
+                                print(f"Fan still running. Time remaining: <1 minute")
         
         # Wait before next check
         time.sleep(CHECK_INTERVAL)

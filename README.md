@@ -1,6 +1,6 @@
 # Kitchen Exhaust Fan Operated by Smoke Sensor
 
-This project uses a Raspberry Pi Pico W, a 5VDC/120VAC relay, Flying Fish MQ smoke sensor, and a 120VAC kitchen exhaust fan. The fan automatically turns on when the MQ sensor detects smoke and turns off 10 minutes after smoke is no longer sensed.
+This project uses a Raspberry Pi Pico W, a 5VDC/120VAC relay, a Flying Fish MQ smoke sensor, and a 120VAC kitchen exhaust fan. The fan automatically turns on when the MQ sensor detects smoke and turns off 10 minutes after smoke is no longer sensed.
 
 ## Hardware Requirements
 
