@@ -111,7 +111,7 @@ Fan still running. Time remaining: 9 minutes
 Fan still running. Time remaining: 8 minutes
 Fan still running. Time remaining: 7 minutes
 ...
-Fan still running. Time remaining: 1 minutes
+Fan still running. Time remaining: 1 minute
 No smoke for 10 minutes. Turning fan off...
 Fan turned OFF
 ```

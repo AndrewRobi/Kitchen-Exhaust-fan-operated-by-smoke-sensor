@@ -119,8 +119,10 @@ def main_loop():
                         # Also print when reaching 0 minutes (< 60 seconds remaining)
                         if minutes_remaining != last_minute_printed:
                             last_minute_printed = minutes_remaining
-                            if minutes_remaining > 0:
+                            if minutes_remaining > 1:
                                 print(f"Fan still running. Time remaining: {minutes_remaining} minutes")
+                            elif minutes_remaining == 1:
+                                print(f"Fan still running. Time remaining: 1 minute")
                             elif minutes_remaining == 0 and remaining > 0:
                                 print(f"Fan still running. Time remaining: <1 minute")
         
