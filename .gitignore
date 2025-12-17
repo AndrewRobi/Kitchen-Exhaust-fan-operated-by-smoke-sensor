@@ -1,0 +1,28 @@
+# MicroPython files
+*.pyc
+__pycache__/
+.python-version
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Thonny IDE
+.thonny/
+
+# Log files
+*.log
+fan_log.txt
+
+# Test files
+test_*.py
+tmp/
+temp/
+
+# OS files
+Thumbs.db
+desktop.ini
