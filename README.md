@@ -1,20 +1,20 @@
 # Kitchen Exhaust Fan Operated by Smoke Sensor
 
-This project uses a Raspberry Pi Pico W, a 5VDC/120VAC relay, a Flying Fish MQ smoke sensor, and a 120VAC kitchen exhaust fan. The fan automatically turns on when the MQ sensor detects smoke and turns off 10 minutes after smoke is no longer sensed.
+This project uses a Raspberry Pi Pico, a 5VDC/120VAC relay, a Flying Fish MQ smoke sensor, and a 120VAC kitchen exhaust fan. The fan automatically turns on when the MQ sensor detects smoke and turns off 10 minutes after smoke is no longer sensed.
 
 ## Hardware Requirements
 
-- **Raspberry Pi Pico W** - Microcontroller board
+- **Raspberry Pi Pico** - Microcontroller board (standard Pico, WiFi not required)
 - **Flying Fish MQ Smoke Sensor** - Digital smoke detection sensor (MQ-2, MQ-135, or similar)
 - **5VDC/120VAC Relay Module** - To control the high voltage fan
 - **120VAC Kitchen Exhaust Fan** - The fan to be controlled
-- **Power Supply** - 5V USB power for Pico W (relay may need separate 5V supply)
+- **Power Supply** - 5V USB power for Pico (relay may need separate 5V supply)
 - **Jumper Wires** - For connections
 
 ## Software Requirements
 
 - **Thonny IDE** - For programming the Pico
-- **MicroPython** - Firmware for Raspberry Pi Pico W
+- **MicroPython** - Firmware for Raspberry Pi Pico
 
 ## Pin Connections
 
@@ -32,7 +32,7 @@ This project uses a Raspberry Pi Pico W, a 5VDC/120VAC relay, a Flying Fish MQ s
 ### Wiring Diagram (Text)
 
 ```
-Raspberry Pi Pico W:
+Raspberry Pi Pico:
   GPIO 15 (Pin 20) -----> MQ Sensor Digital Out (DO)
   GPIO 14 (Pin 19) -----> Relay Control (IN)
   VBUS (Pin 40)     -----> MQ Sensor VCC & Relay VCC
@@ -52,12 +52,12 @@ Fan:
 
 ## Installation
 
-### 1. Install MicroPython on Raspberry Pi Pico W
+### 1. Install MicroPython on Raspberry Pi Pico
 
-1. Download the latest MicroPython firmware for Pico W from [micropython.org](https://micropython.org/download/rp2-pico-w/)
-2. Hold the BOOTSEL button on the Pico W and connect it to your computer via USB
+1. Download the latest MicroPython firmware for Pico from [micropython.org](https://micropython.org/download/rp2-pico/)
+2. Hold the BOOTSEL button on the Pico and connect it to your computer via USB
 3. The Pico will appear as a USB mass storage device
-4. Copy the `.uf2` firmware file to the Pico W
+4. Copy the `.uf2` firmware file to the Pico
 5. The Pico will automatically reboot with MicroPython installed
 
 ### 2. Install Thonny IDE
@@ -65,15 +65,15 @@ Fan:
 1. Download and install Thonny from [thonny.org](https://thonny.org/)
 2. Open Thonny and go to Tools > Options > Interpreter
 3. Select "MicroPython (Raspberry Pi Pico)" as the interpreter
-4. Select the correct COM port for your Pico W
+4. Select the correct COM port for your Pico
 
 ### 3. Upload the Code
 
 1. Clone or download this repository
 2. Open `main.py` in Thonny
 3. (Optional) Modify `config.py` to customize pin assignments and timing
-4. Save `main.py` to the Raspberry Pi Pico W (File > Save as... > Raspberry Pi Pico)
-5. Save `config.py` to the Raspberry Pi Pico W (if customized)
+4. Save `main.py` to the Raspberry Pi Pico (File > Save as... > Raspberry Pi Pico)
+5. Save `config.py` to the Raspberry Pi Pico (if customized)
 6. The program will start automatically when the Pico is powered on
 
 ## Configuration
@@ -101,7 +101,7 @@ VERBOSE_LOGGING = True  # Set to False to reduce console output
 
 ## Operation
 
-1. **Power On**: When the Pico W is powered, the program starts automatically
+1. **Power On**: When the Pico is powered, the program starts automatically
 2. **Monitoring**: The system continuously monitors the smoke sensor
 3. **Smoke Detected**: When smoke is detected:
    - The relay activates

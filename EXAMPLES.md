@@ -2,7 +2,7 @@
 
 ## Quick Start
 
-1. **Upload Files**: Copy `main.py` and `config.py` to your Raspberry Pi Pico W
+1. **Upload Files**: Copy `main.py` and `config.py` to your Raspberry Pi Pico
 2. **Connect Hardware**: Wire the smoke sensor and relay as described in README.md
 3. **Power On**: The system starts automatically
 

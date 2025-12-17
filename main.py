@@ -1,9 +1,9 @@
 """
 Kitchen Exhaust Fan Controller with Smoke Sensor
-For Raspberry Pi Pico W with MicroPython
+For Raspberry Pi Pico with MicroPython
 
 Hardware:
-- Raspberry Pi Pico W
+- Raspberry Pi Pico
 - Flying Fish MQ Smoke Sensor (Digital output)
 - 5VDC/120VAC Relay Module
 - 120VAC Kitchen Exhaust Fan
