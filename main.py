@@ -49,6 +49,7 @@ relay.value(0 if RELAY_ACTIVE_HIGH else 1)
 # State variables
 fan_running = False
 last_smoke_time = 0
+last_minute_printed = -1  # Track last printed minute to avoid duplicates
 
 print("Kitchen Exhaust Fan Controller Started")
 print(f"Smoke Sensor Pin: GPIO{SMOKE_SENSOR_PIN}")
@@ -58,10 +59,11 @@ print("System ready. Monitoring for smoke...")
 
 def turn_fan_on():
     """Turn the fan ON by activating the relay"""
-    global fan_running
+    global fan_running, last_minute_printed
     if not fan_running:
         relay.value(1 if RELAY_ACTIVE_HIGH else 0)
         fan_running = True
+        last_minute_printed = -1  # Reset minute tracking
         print("SMOKE DETECTED! Fan turned ON")
 
 def turn_fan_off():
@@ -86,8 +88,10 @@ def read_smoke_sensor():
     else:
         return sensor_value == 0
 
-# Main control loop
-try:
+def main_loop():
+    """Main control loop for monitoring smoke and controlling fan"""
+    global fan_running, last_smoke_time, last_minute_printed
+    
     while True:
         # Read the smoke sensor
         smoke_detected = read_smoke_sensor()
@@ -110,12 +114,18 @@ try:
                     # Still within delay period - keep fan running
                     if VERBOSE_LOGGING:
                         remaining = SMOKE_CLEAR_DELAY - time_since_smoke
-                        if int(remaining) % 60 == 0 and int(remaining) > 0:  # Print every minute
-                            print(f"Fan still running. Time remaining: {int(remaining // 60)} minutes")
+                        minutes_remaining = int(remaining // 60)
+                        # Print once per minute when the minute changes
+                        if minutes_remaining > 0 and minutes_remaining != last_minute_printed:
+                            last_minute_printed = minutes_remaining
+                            print(f"Fan still running. Time remaining: {minutes_remaining} minutes")
         
         # Wait before next check
         time.sleep(CHECK_INTERVAL)
 
+# Main control loop
+try:
+    main_loop()
 except KeyboardInterrupt:
     print("\nShutting down...")
     turn_fan_off()
